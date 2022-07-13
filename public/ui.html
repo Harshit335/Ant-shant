@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- <script> 
+    $(function(){
+        // alert("Hello World")
+        
+        $("#template-area").load("htmlfiletemp.html", function(){
+            alert("Heeeeellllooooo World!");
+        }); 
+    });
+    </script>  -->
+    <script>
+        // function handleclick() {
+        //     alert("clicked");
+        //     // document.getElementById("members-div").innerHTML = "This is content for members.";
+        //     $("#template-frame").contents().find("#members-div").html("new HTML content goes here");
+        // }
+        // function handleclick() {
+        //     $(document).ready(function(){
+        //         alert($("#template-frame").contents().find("body"));
+        //         $('#template-frame').ready(function(){
+        //             $(this).contents().find('#members-div').html('Hey, I have changed the body content yay!');
+        //         });
+        //     }); 
+        // }
+
+        function handleclick() {
+            var iframe = document.getElementById("template-frame");
+            var elmnt = iframe.contentWindow.document.getElementsById("members-div");
+            alert(elmnt);
+            elmnt.style.display = "none";
+        }
+    </script>
+    <style>
+        .row{
+            display: flex;
+        }
+        .column{
+            flex: 50%;
+        }
+        .column-2-row{
+            display: flex;
+            flex-direction: column;
+        }
+        .column-upper{
+            flex: 50%;
+            background-color: beige;
+        }
+
+        .border-box-upper{
+            border: 1px solid black;
+            min-height: 300px;
+        }
+
+        .border-box-lower{
+            border: 1px solid black;
+            min-height: 400px;
+        }
+
+        .column-lower{
+            flex: 50%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="column" id="template-area">
+            <iframe src="./htmlfiletemp.html" id="template-frame" title="description" height="700px" width="700px"></iframe>
+            <!-- <script>$("#template-frame").contents().find("#members-div").html("new HTML content goes here");</script> -->
+        </div>
+        <div class="column">
+            <div class="column-2-row">
+                <div class="column-upper">
+                    <div class="border-box-upper">
+                        hI
+                    </div>
+                </div>
+                <div class="column-lower">
+                    <div class="border-box-lower">
+                        Hey
+                        <button onclick=handleclick()>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
